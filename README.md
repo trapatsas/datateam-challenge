@@ -68,7 +68,7 @@ You have a free hand in choosing the environment in which this code is developed
 
 ## Languages
 
-Must be in Scala, Python, Java, Golang or Perl.
+Must be in Scala, Java
 
 ## Licencing 
 
