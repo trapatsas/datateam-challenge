@@ -22,9 +22,9 @@ You will be provided with three data sets to consume:
  * `sample_data.csv.gz` - Some sample input data for your script, containing:
   * A universally unique identifier (uuid) which identifies some end-user
   * An IPv4 ip address belonging to this user. 
-  * For this challenge you need not concern yourself with the precice details of the uuid data and can simply treat it as a unique string key.
+  * For this challenge you need not concern yourself with the precise details of the uuid data and can simply treat it as a unique string key.
 
-All data samples are provided in gzip format for the purposes of efficient data-storage, however it is beyond the scope of this excercise to build gzip decoding/encoding into your script. In other words it is perfectly acceptable for your script to read and write uncompressed csvs.
+All data samples are provided in gzip format for the purposes of efficient data-storage, however it is beyond the scope of this exercice to build gzip decoding/encoding into your script. In other words it is perfectly acceptable for your script to read and write uncompressed csvs.
 
 ## Input
 
@@ -52,13 +52,13 @@ Your script will need to do the following. Use of open-source, third-party libra
 
  * Be capable of performing large batch-jobs efficiently.
 
- * Be easily adaptable for parllelisation (though you do not need to implement parallelisation for the purposes of this task)
+ * Be easily adaptable for parallelisation (though you do not need to implement parallelisation for the purposes of this task)
 
  * Contain good test coverage.
 
  * Include basic documentation.
 
-## Delvierables 
+## Deliverables 
 
 The purpose of this task is to provide code which satisfies the task above whilst at the same time demonstrating your coding style and engineering skills. 
 
@@ -70,7 +70,7 @@ You have a free hand in choosing the environment in which this code is developed
 
 Must be in Scala, Java
 
-## Licencing 
+## Licensing 
 
 * `maxmind-sample-20161201.csv.gz`
 
