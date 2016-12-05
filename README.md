@@ -24,7 +24,7 @@ You will be provided with three data sets to consume:
   * An IPv4 ip address belonging to this user. 
   * For this challenge you need not concern yourself with the precise details of the uuid data and can simply treat it as a unique string key.
 
-All data samples are provided in gzip format for the purposes of efficient data-storage, however it is beyond the scope of this exercice to build gzip decoding/encoding into your script. In other words it is perfectly acceptable for your script to read and write uncompressed csvs.
+All data samples are provided in gzip format for the purposes of efficient data-storage, however it is beyond the scope of this exercise to build gzip decoding/encoding into your script. In other words it is perfectly acceptable for your script to read and write uncompressed csvs.
 
 ## Input
 
