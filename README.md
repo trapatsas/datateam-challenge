@@ -21,8 +21,8 @@ You will be provided with three data sets to consume:
 
  * `sample_data.csv.gz` - Some sample input data for your script, containing:
   * A universally unique identifier (uuid) which identifies some end-user
-  * An IPv4 ip address belonging to this user. 
-  * For this challenge you need not concern yourself with the precise details of the uuid data and can simply treat it as a unique string key.
+  * An IPv4 address belonging to this user. 
+  * For this challenge you need not concern yourself with the precise details of the uuid data and can simply treat it as a unique string key of a fixed format.
 
 All data samples are provided in gzip format for the purposes of efficient data-storage, however it is beyond the scope of this exercise to build gzip decoding/encoding into your script. In other words it is perfectly acceptable for your script to read and write uncompressed csvs.
 
@@ -38,23 +38,25 @@ Your script is expected to generate an output csv file containing one line of ou
 
 Your script will need to do the following. Use of open-source, third-party libraries is highly encouraged:
 
- * Perform the basic core functionality:
+ * Perform the following basic core functionality:
 
   * Parse and understand the input csv.
 
-  * Load the ip- and airport-geolocation data into some internal, in-memory data structure.
+  * Load the ip- and airport-geolocation data into either an internal, in-memory data structure or an external in-memory database such as Redis. (HINT: if you do opt for Redis as a solution, the 'Geo' commands could be very helpful to you here!)
 
-  * IP block matching. For each incoming row (user and ip address) you will need to first match an IP address to an IP block. For example 12.34.56.78 belongs to block 12.34.0.0/16. 
+  * IP block matching. For each incoming row (user uuid and ip address) you will need to first match an IP address to an IP block. For example 12.34.56.78 belongs to block 12.34.0.0/16. 
 
-  * Geodistance calculation. Having identified the IP block, you will have an approximation of the user coordinates. You must now compare this with the set of airport coordinates to identify the airport and IATA code with the closest geodistance.
+  * Geodistance calculation. Having identified the IP block, you will have an approximation of the user's coordinates. You must now compare this with the set of airport coordinates to identify the airport and IATA code with the closest geodistance to the user.
 
-  * Write out the uuid of the user and IATA code of the airport.
+  * Write out the uuid of the user and matching IATA code of the airport.
 
  * Be capable of performing large batch-jobs efficiently.
 
- * Be easily adaptable for parallelisation (though you do not need to implement parallelisation for the purposes of this task)
+ * Be easily adaptable for parallelisation (though you do not need to implement parallelisation for the purposes of this task).
 
- * Contain good test coverage.
+ * Contain decent test coverage.
+
+ * Contain adequate error handling.
 
  * Include basic documentation.
 
