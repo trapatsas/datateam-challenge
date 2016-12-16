@@ -63,7 +63,7 @@ You have a free hand in choosing the environment in which this code is developed
 
 ## Languages
 
-Must be in Scala, Java
+Must be in Scala, Java, Python
 
 ## Licensing 
 
