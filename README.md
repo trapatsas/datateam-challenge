@@ -2,17 +2,12 @@
 
 ## The Objective
 
-To build an efficient script that uses geoip information (provided) to find the
-closest airport to a given user based on their IP address.
+To build an efficient script that finds the closest airport to a given user
+based on their geolocation and the geolocation of the airport.
 
 ## Data-sets
 
-You will be provided with three data sets to consume:
-
- * `maxmind-sample-20161201.csv.gz` - A simplified version of a larger data set provided for free by geolocation provider Maxmind Inc., containing the following:
-  * IPv4 range block in CIDR notation (first column)
-  * Latitude and Longitude in floating point format (second and third columns, respectively)
-  * The coordinates represent an approximate location of any device with an IP address belonging to the given range.
+You will be provided with two data sets to consume:
 
  * `optd-sample-20161201.csv.gz` - A simplified version of a data set from Open Travel Data, containing geo-coordinates of major airports:
   * IATA airport code - a three-character identifier of global airports (first column)
@@ -20,8 +15,8 @@ You will be provided with three data sets to consume:
   * The coordinates represent the location of the airport represented by the IATA code.
 
  * `sample_data.csv.gz` - Some sample input data for your script, containing:
-  * A universally unique identifier (uuid) which identifies some end-user
-  * An IPv4 address belonging to this user. 
+  * A universally unique identifier (uuid) which identifies some end-user (first column)
+  * Latitude and Longitude in floating point format (second and third columns, respectively)
   * For this challenge you need not concern yourself with the precise details of the uuid data and can simply treat it as a unique string key of a fixed format.
 
 All data samples are provided in gzip format for the purposes of efficient data-storage, however it is beyond the scope of this exercise to build gzip decoding/encoding into your script. In other words it is perfectly acceptable for your script to read and write uncompressed csvs.
@@ -32,7 +27,7 @@ Your script is expected to parse a csv file in the same format as sample_data.cs
 
 ## Output
 
-Your script is expected to generate an output csv file containing one line of output for each line of input. The output line is to contain the uuid from the input file and a corresponding IATA code for output. If no match can be found, an empty string should be returned in place of the IATA code. (This should only happen if the ip address is invalid or otherwise does not correspond to a range available in the database csv).
+Your script is expected to generate an output csv file containing one line of output for each line of input. The output line is to contain the uuid from the input file and a corresponding IATA code for output. If no match can be found, an empty string should be returned in place of the IATA code. 
 
 ## Task.
 
@@ -42,11 +37,9 @@ Your script will need to do the following. Use of open-source, third-party libra
 
   * Parse and understand the input csv.
 
-  * Load the ip- and airport-geolocation data into either an internal, in-memory data structure or an external in-memory database such as Redis. (HINT: if you do opt for Redis as a solution, the 'Geo' commands could be very helpful to you here!)
+  * Load the airport-geolocation data into either an internal, in-memory data structure or an external in-memory database such as Redis. (HINT: if you do opt for Redis as a solution, the 'Geo' commands could be very helpful to you here!)
 
-  * IP block matching. For each incoming row (user uuid and ip address) you will need to first match an IP address to an IP block. For example 12.34.56.78 belongs to block 12.34.0.0/16. 
-
-  * Geodistance calculation. Having identified the IP block, you will have an approximation of the user's coordinates. You must now compare this with the set of airport coordinates to identify the airport and IATA code with the closest geodistance to the user.
+  * Geodistance calculation. Take the users's coordinates and compare this with the set of airport coordinates to identify the airport and IATA code with the closest geodistance to the user.
 
   * Write out the uuid of the user and matching IATA code of the airport.
 
@@ -62,7 +55,7 @@ Your script will need to do the following. Use of open-source, third-party libra
 
 ## Deliverables 
 
-The purpose of this task is to provide code which satisfies the task above whilst at the same time demonstrating your coding style and engineering skills. 
+The purpose of this task is to provide code which satisfies the task above whilst at the same time demonstrating your coding style and engineering skills.
 
 ## Environment
 
@@ -74,7 +67,10 @@ Must be in Scala, Java
 
 ## Licensing 
 
-* `maxmind-sample-20161201.csv.gz`
+* `sample_data.csv.gz`
+
+The longitude, latitude data in this sample was taken from a data-set provided
+by Maxmind inc.
 
 This work is licensed under the Creative Commons
 Attribution-ShareAlike 4.0 International License. To view a copy of
